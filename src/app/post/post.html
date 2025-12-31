@@ -1,20 +1,24 @@
-<h3 class="post-head">Angular CRUD with Fake API</h3>
+<h3 class="p-5 font-bold">Angular CRUD with Fake API</h3>
 
-<div class="formContainer">
-    <form class="postForm" (ngSubmit)="submitPost()">
-        <input class="post-input" type="text" name="title" placeholder="Title" [(ngModel)]="postData.title" required>
+<div class="w-full flex p-10 justify-center">
+    <form class="border-black border-solid border-1 w-200 p-10" (ngSubmit)="submitPost()">
+        <input class="h-10 p-5 border-solid border-1 border-black rounded-lg w-full" type="text" name="title" placeholder="Title" [(ngModel)]="postData.title" required>
         <br><br>
-        <textarea class="post-input" name="body" placeholder="Body" [(ngModel)]="postData.body" required></textarea>
+        <textarea class="h-15 p-5 border-solid border-1 border-black rounded-lg w-full" name="body" placeholder="Body" [(ngModel)]="postData.body" required></textarea>
         <br><br>
-        <button [ngStyle]="{ 'width': editMode ? '110px' : '80px' }" class="post-btn" (click)="submitPost()" type="submit">
-            {{ editMode ? 'Update' : 'Add' }} Post
+        <button
+          [ngClass]="editMode ? 'w-50' : 'w-40'"
+          class="text-white bg-green-500 rounded-lg h-10 border border-black"
+          (click)="submitPost()"
+          type="submit">
+          {{ editMode ? 'Update' : 'Add' }} Post
         </button>
     </form>
 </div>
 
 <hr>
 
-<table class="table">
+<table class="p-10 w-full">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -28,9 +32,9 @@
       <td scope="row">{{ post.id }}</td>
       <td>{{ post.title }}</td>
       <td>{{ post.body }}</td>
-      <td class="btn-container">
-        <button class="edit-btn" (click)="editPost(post)">EDIT</button>
-        <button class="delete-btn" (click)="deletePost(post.id)">DELETE</button>
+      <td class="flex flex-row justify-around gap-4">
+        <button class="bg-green-500 text-white rounded-lg h-10 w-18" (click)="editPost(post)">EDIT</button>
+        <button class="bg-red-500 text-white rounded-lg h-10 w-18" (click)="deletePost(post.id)">DELETE</button>
       </td>
     </tr>
     

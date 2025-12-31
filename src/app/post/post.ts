@@ -28,20 +28,7 @@ export class Post implements OnInit {
     });
   }
 
-  // submitPost() {
-  //   if(this.editMode) {
-  //     this.postService.updatePost(this.editId!, this.postData).subscribe(() => {
-  //       this.resetForm();
-  //       this.loadPosts();
-  //     });
-  //   } else {
-  //     this.postService.addPost(this.postData).subscribe(() => {
-  //       this.resetForm();
-  //       this.loadPosts();
-  //     })
-  //   }
-  // }
-
+  // function to submit post
   submitPost() {
     if (this.editMode) {
       this.postService.updatePost(this.editId!, this.postData).subscribe(() => {
@@ -60,17 +47,14 @@ export class Post implements OnInit {
     }
   }
 
-
+  // function to edit post
   editPost(post: any) {
     this.editMode = true;
     this.editId = post.id;
     this.postData = { title: post.title, body: post.body };
   }
 
-  // deletePost(id: number) {
-  //   this.postService.deletePost(id).subscribe(() => this.loadPosts());
-  // }
-
+  // function to delete post
   deletePost(id: number) {
   this.postService.deletePost(id).subscribe(() => {
     this.posts = this.posts.filter(post => post.id !== id);
